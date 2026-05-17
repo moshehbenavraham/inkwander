@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f4ecdf" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+
+    <title>Perspective — Personal Blog for Everyday Inspiration</title>
+    <meta name="description" content="A space for exploring ideas, finding inspiration, and discovering new ways of seeing the world through lifestyle, wellness, travel, and personal growth." />
+    <meta name="author" content="Perspective Blog" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://perspective.blog/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="Perspective — Personal Blog for Everyday Inspiration" />
+    <meta property="og:description" content="Lifestyle, wellness, travel, creativity, and personal growth essays for thoughtful everyday living." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://perspective.blog/" />
+    <meta property="og:site_name" content="Perspective" />
+    <meta property="og:image" content="https://perspective.blog/social-card.svg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Perspective — Personal Blog for Everyday Inspiration" />
+    <meta name="twitter:description" content="Lifestyle, wellness, travel, creativity, and personal growth essays for thoughtful everyday living." />
+    <meta name="twitter:image" content="https://perspective.blog/social-card.svg" />
+    <meta name="twitter:site" content="@perspectiveblog" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!--
+      Prevent flash-of-light-content on dark-mode loads. Runs before <body> paints,
+      using the same key/contract the Header component uses (localStorage `theme`
+      and the user's prefers-color-scheme).
+    -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var isDark = saved === "dark" || (!saved && prefersDark);
+          if (isDark) {
+            document.documentElement.classList.add("dark");
+          }
+          // Set color-scheme so native form controls and scrollbars render in the
+          // correct theme on first paint (avoids a light-scrollbar flash in dark mode).
+          document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+        } catch (e) {
+          // localStorage may be blocked; fail open to light theme.
+          document.documentElement.style.colorScheme = "light";
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
